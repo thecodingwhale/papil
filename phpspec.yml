@@ -1,0 +1,6 @@
+suites:
+  main:
+    spec_path: 'tests'
+extensions:
+  PhpSpec\Laravel\Extension\LaravelExtension:
+    framework_path: "../bootstrap/app.php"
