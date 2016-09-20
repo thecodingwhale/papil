@@ -2,5 +2,6 @@ suites:
   main:
     spec_path: 'tests'
 extensions:
+  PhpSpecCodeCoverage\CodeCoverageExtension:
   PhpSpec\Laravel\Extension\LaravelExtension:
     framework_path: "../bootstrap/app.php"
