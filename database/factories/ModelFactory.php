@@ -21,3 +21,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\Papil\Domain\Task\Model\Task::class, function (Faker\Generator $faker) {
+    return [
+        'title' => 'Task 1',
+        'status' => 'pending'
+    ];
+});

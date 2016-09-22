@@ -5,12 +5,14 @@ namespace Papil\Domain\Task\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Papil\Domain\Task\Model\Task;
 
 class TaskController extends Controller
 {
     public function all()
     {
-        return response()->json([]);
+        $tasks = new Task();
+        return response()->json($tasks->get()->toArray());
     }
 
 }

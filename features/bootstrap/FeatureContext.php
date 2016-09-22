@@ -24,6 +24,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function __construct()
     {
+        $this->host = env('APP_HOST');
     }
 
     public function iShouldBeAbleToDoSomethingWithLaravel()
@@ -31,7 +32,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
         $environmentFileName = app()->environmentFile();
         $environmentName = env('APP_ENV');
         PHPUnit::assertEquals('.env.behat', $environmentFileName);
-        PHPUnit::assertEquals('acceptance', $environmentName);
+        PHPUnit::assertEquals('testing', $environmentName);
     }
 
     /**
@@ -57,7 +58,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function iCall($arg1, $arg2)
     {
         $client = new \GuzzleHttp\Client();
-        $this->response = $client->request($arg1, 'http://pet-project.local' . $arg2);
+        $this->response = $client->request($arg1, $this->host . $arg2);
     }
 
     /**
@@ -74,5 +75,18 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function theHeaderContentTypeShouldReturnJson()
     {
         PHPUnit::assertEquals($this->response->getHeader('Content-Type')[0], 'application/json');
+    }
+
+
+    /**
+     * @Then the response contains :arg1 tasks
+     */
+    public function theResponseContainsTasks($arg1)
+    {
+        $data = json_decode($this->response->getBody());
+        $totalCount = count($data);
+        if ($totalCount != $arg1) {
+            throw new Exception("Response did not contain at least ". $arg1 ." transaction. Total count: ". $totalCount);
+        }
     }
 }
