@@ -1,6 +1,6 @@
 <?php
 
-namespace Papil\Domain\Task\Model;
+namespace Papil\Domain\Task\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

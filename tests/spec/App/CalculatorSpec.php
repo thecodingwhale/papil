@@ -17,5 +17,6 @@ class CalculatorSpec extends ObjectBehavior
     {
         $this->sum(4, 7);
         $this->result()->shouldBe(11);
+
     }
 }

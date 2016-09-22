@@ -1,3 +1,6 @@
 #!/bin/bash
+php artisan config:clear && composer du -o
+php artisan migrate:refresh
+php artisan db:seed
 vendor/bin/behat
 vendor/bin/phpspec run --format=pretty

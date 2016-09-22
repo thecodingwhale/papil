@@ -7,14 +7,22 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
+
 use PHPUnit_Framework_Assert as PHPUnit;
 
+use Laracasts\Behat\Context\Migrator;
+use Laracasts\Behat\Context\DatabaseTransactions;
+
 use App\Calculator as Calculator;
+
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext
 {
+    use Migrator;
+    use DatabaseTransactions;
+
     /**
      * Initializes context.
      *
@@ -33,6 +41,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
         $environmentName = env('APP_ENV');
         PHPUnit::assertEquals('.env.behat', $environmentFileName);
         PHPUnit::assertEquals('testing', $environmentName);
+
     }
 
     /**
@@ -57,6 +66,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iCall($arg1, $arg2)
     {
+
         $client = new \GuzzleHttp\Client();
         $this->response = $client->request($arg1, $this->host . $arg2);
     }
