@@ -5,6 +5,10 @@ namespace Papil\Domain\Task;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+use Papil\Infrastructure\Repositories\TaskRepository;
+use Papil\Domain\Task\Contracts\TaskContract;
+use Papil\Domain\Task\Models\Task;
+
 class TaskServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +32,19 @@ class TaskServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind('TaskContract', function()
+        {
+            return new TaskRepository(new Task);
+        });
+    }
+
+    /**
      * Define the routes for the application.
      *
      * @return void
@@ -35,7 +52,7 @@ class TaskServiceProvider extends ServiceProvider
     public function map()
     {
         Route::group([
-            'middleware' => 'web',
+            'middleware' => 'api',
             'namespace' => $this->namespace
         ], function ($router) {
             require base_path('src/Domain/Task/routes.php');
