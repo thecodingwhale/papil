@@ -2,9 +2,9 @@
 
 namespace Papil\Domain\Task\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Papil\Core\BaseModel;
 
-class Task extends Model
+class Task extends BaseModel
 {
     /**
      * The attributes that are mass assignable.
