@@ -1,6 +1,3 @@
-suites:
-  main:
-    spec_path: 'tests'
 extensions:
   PhpSpecCodeCoverage\CodeCoverageExtension:
   PhpSpec\Laravel\Extension\LaravelExtension:
