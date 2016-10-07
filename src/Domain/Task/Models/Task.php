@@ -12,7 +12,7 @@ class Task extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'user_id', 'status', 'title'
+        'user_id', 'completed', 'text'
     ];
 
 }
