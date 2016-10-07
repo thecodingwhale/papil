@@ -24,8 +24,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(\Papil\Domain\Task\Models\Task::class, function (Faker\Generator $faker) {
     return [
-        'title' => 'Task 1',
+        'text' => 'Task 1',
         'user_id' => 1,
-        'status' => 'pending'
+        'completed' => false
     ];
 });

@@ -13,14 +13,14 @@ class TasksTableSeeder extends Seeder
     {
         factory(\Papil\Domain\Task\Models\Task::class, 1)->create([
             'user_id' => 1,
-            'status' => 'pending',
-            'title' => 'Get some groceries after work.'
+            'completed' => false,
+            'text' => 'Get some groceries after work.'
         ]);
 
         factory(\Papil\Domain\Task\Models\Task::class, 1)->create([
             'user_id' => 1,
-            'status' => 'completed',
-            'title' => 'Buy some sticky notes.'
+            'completed' => true,
+            'text' => 'Buy some sticky notes.'
         ]);
     }
 }

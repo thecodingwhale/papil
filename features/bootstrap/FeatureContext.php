@@ -71,14 +71,14 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
-     * @Given I have the following task user_id: :userId, title: :title and status :status
+     * @Given I have the following task
      */
-    public function iHaveTheFollowingTaskUserIdTitleAndStatus($userId, $title, $status)
+    public function iHaveTheFollowingTask()
     {
         $this->newTask = [
-            'user_id' => $userId,
-            'title' => $title,
-            'status' => $status
+            'user_id' => 1,
+            'text' => 'task',
+            'completed' => false
         ];
     }
 
@@ -160,8 +160,8 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
         $this->taskId = $taskId;
         $this->taskUserId = $taskUserId;
         $this->task = [
-            "title" => $taskTitle,
-            "status" => $taskStatus
+            "text" => $taskTitle,
+            "completed" => false
         ];
     }
 
@@ -179,7 +179,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function theTaskTitleShouldBe($taskTitle)
     {
-        PHPUnit::assertEquals($this->taskRepository->find($this->taskId)->title, $taskTitle);
+        PHPUnit::assertEquals($this->taskRepository->find($this->taskId)->text, $taskTitle);
     }
 
     /**
@@ -187,6 +187,6 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function theTaskStatusShouldBe($taskStatus)
     {
-        PHPUnit::assertEquals($this->taskRepository->find($this->taskId)->status, $taskStatus);
+        PHPUnit::assertEquals($this->taskRepository->find($this->taskId)->completed, false);
     }
 }
