@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "guzzlehttp/guzzle": "~6.0",
-        "henrikbjorn/phpspec-code-coverage": "^3.0"
+        "henrikbjorn/phpspec-code-coverage": "^3.0",
+        "barryvdh/laravel-cors": "^0.8.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
